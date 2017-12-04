@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Простые числа 0 - 100</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var i = 2;
+        var str = '';
+
+        while(i < 100) {
+            for(var j = 2; j < i; j++) {
+                if(i % j === 0) {
+                    break;
+                }
+            }
+            str += i + ' ';
+            i++;
+        }
+
+        console.log(str);
+    </script>
+</body>
+</html>

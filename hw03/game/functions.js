@@ -1,9 +1,9 @@
 function start() {
+    randNumber = getNumber(4);
     console.log("randomNumber = " + randNumber);
 
-    // hello();
-    // game(getUserNumber());
-    console.log(getCow(randNumber, 1234));
+    hello();
+    game(getUserNumber());
 }
 
 function hello() {
@@ -65,11 +65,53 @@ function getCow(randomNum, userNum) {
         }
     }
 
-    return cow + " Коров";
+    switch (cow) {
+        case 0:
+            return cow + " Коров";
+            break;
+        case 1:
+            return cow + " Корова";
+            break;
+        case 2:
+            return cow + " Коровы";
+            break;
+        case 3:
+            return cow + " Коровы";
+            break;
+        case 4:
+            return cow + " Коровы";
+            break;
+    }
 }
 
 function getBull(randomNum, userNum) {
-    // в процессе
+    var rNum = randomNum + '';
+    var uNum = userNum + '';
+    var bull = 0;
+
+    for(var i in rNum) {
+        if(rNum.indexOf(uNum[i]) === uNum.indexOf(uNum[i])) {
+            bull++;
+        }
+    }
+
+    switch (bull) {
+        case 0:
+            return bull + " Быков";
+            break;
+        case 1:
+            return bull + " Бык";
+            break;
+        case 2:
+            return bull + " Быка";
+            break;
+        case 3:
+            return bull + " Быка";
+            break;
+        case 4:
+            return bull + " Быка";
+            break;
+    }
 }
 
 function game(num) {
@@ -89,7 +131,6 @@ function game(num) {
                     alert("Хорошая попытка, у Вас " + getCow(randNumber, userNumber) + " и " + getBull(randNumber, userNumber));
                     game(getUserNumber());
                 } else if(num == randNumber) {
-                    console.log(randNumber + " < " + num);
                     finish();
                 }
             } else {
