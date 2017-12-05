@@ -6,20 +6,48 @@
 </head>
 <body>
     <script type="text/javascript">
-        var i = 2;
-        var str = '';
+        console.log(getSimpleNumbers(25));
+        console.log(getChetNechet());
 
-        while(i < 100) {
-            for(var j = 2; j < i; j++) {
-                if(i % j === 0) {
-                    break;
-                }
+        function getSimpleNumbers(numbers) {
+            if (numbers < 1 || typeof numbers != 'number') {
+                return null;
             }
-            str += i + ' ';
-            i++;
+            numbers = Math.floor(numbers);
+
+            var sn = 2;
+            var simples = [1];
+            var isItSimple = true;
+
+            while(simples.length < numbers) {
+                for(var i = 2; i < sn; i++) {
+                    if (sn % i == 0) {
+                        isItSimple = false;
+                        break;
+                    }
+                }
+
+                if (isItSimple == true) {
+                    simples.push(sn);
+                }
+
+                isItSimple = true;
+                sn++;
+            }
+            return simples;
         }
 
-        console.log(str);
+        function getChetNechet() {
+            for(var i = 0;i <= 10;i++) {
+                if(i === 0) {
+                    console.log(i + ' - это ноль');
+                } else if(i % 2 === 0) {
+                    console.log(i + ' - четное число');
+                } else if(i % 2 !== 0) {
+                    console.log(i + ' - нечетное число');
+                }
+            }
+        }
     </script>
 </body>
 </html>
