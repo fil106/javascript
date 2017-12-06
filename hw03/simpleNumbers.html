@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Простые числа 0 - 100</title>
+</head>
+<body>
+    <script type="text/javascript">
+        console.log(getSimpleNumbers(25));
+        console.log(getChetNechet());
+
+        function getSimpleNumbers(numbers) {
+            if (numbers < 1 || typeof numbers != 'number') {
+                return null;
+            }
+            numbers = Math.floor(numbers);
+
+            var sn = 2;
+            var simples = [1];
+            var isItSimple = true;
+
+            while(simples.length < numbers) {
+                for(var i = 2; i < sn; i++) {
+                    if (sn % i == 0) {
+                        isItSimple = false;
+                        break;
+                    }
+                }
+
+                if (isItSimple == true) {
+                    simples.push(sn);
+                }
+
+                isItSimple = true;
+                sn++;
+            }
+            return simples;
+        }
+
+        function getChetNechet() {
+            for(var i = 0;i <= 10;i++) {
+                if(i === 0) {
+                    console.log(i + ' - это ноль');
+                } else if(i % 2 === 0) {
+                    console.log(i + ' - четное число');
+                } else if(i % 2 !== 0) {
+                    console.log(i + ' - нечетное число');
+                }
+            }
+        }
+
+        for(var a = 0; a < 10; console.log(a++)) {}
+        var str = '';
+        for(var i = 0; i <= 20; i++) {
+            str += 'x';
+            console.log(str);
+        }
+    </script>
+</body>
+</html>
