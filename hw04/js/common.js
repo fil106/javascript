@@ -23,30 +23,32 @@ var game = {
     whatNext: function() {
         switch(this.currObject) {
             case this.objects[0]:
-                if(this.answer === this.answers[1]) {
+                if(this.answer === '1') {
                     console.log("В шкафу вы видите только старую Шанель... Ничего полезного.");
                     this.doSomething();
-                } else if(this.answer === this.answers[2]) {
+                } else {
                     this.doSomething();
                 }
                 break;
             case this.objects[1]:
-                if(this.answer === this.answers[1]) {
+                if(this.answer === '1') {
                     console.log("Ухты в первом ящике под старой книгой вы нашли ключ. Похоже он от двери!");
                     this.key = true;
                     this.doSomething();
-                } else if(this.answer === this.answers[2]) {
+                } else {
                     this.doSomething();
                 }
                 break;
             case this.objects[2]:
-                if(this.answer === this.answers[1]) {
-                    if(this.key = true) {
+                if(this.answer === '1') {
+                    if(this.key) {
                         console.log("Вы достаете из кармана, найденный в комоде ключ, и спокойно открываете дверь. Отличная игра!");
+                        alert("Обновите страницу, чтобы запустить игру заново =)");
+                    } else {
+                        console.log("Дергаете ручку... заперто, похоже нужен ключ.");
+                        this.doSomething();
                     }
-                    console.log("Дергаете ручку... заперто, похоже нужен ключ.");
-                    this.doSomething();
-                } else if(this.answer === this.answers[2]) {
+                } else {
                     this.doSomething();
                 }
                 break;
