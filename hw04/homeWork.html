@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var number = prompt("Введите число от 0 до 999");
+        var obj = {};
+
+        if(number > 999 || number < 0) {
+            alert("Введите корректное значение");
+        } else {
+            for(var i = 0; i < number.length; i++) {
+                if(i === 0) {
+                    obj['Сотни'] = number[i];
+                } else if(i === 1) {
+                    obj['Десятки'] = number[i];
+                } else if(i === 2) {
+                    obj['Единицы'] = number[i];
+                }
+            }
+        }
+
+        console.log(obj);
+    </script>
+</body>
+</html>
