@@ -6,24 +6,34 @@
 </head>
 <body>
     <script>
-        var number = prompt("Введите число от 0 до 999");
-        var obj = {};
+        //хороший вариант делаем РЕВЕРС массива из цифр
+        function splitByDigitsOne(num) {
+            var digits = ['Единицы', 'Десятки', 'Сотни'];
+            var nums = {};
+            num = (num + '').split('').reverse();
 
-        if(number > 999 || number < 0) {
-            alert("Введите корректное значение");
-        } else {
-            for(var i = 0; i < number.length; i++) {
-                if(i === 0) {
-                    obj['Сотни'] = number[i];
-                } else if(i === 1) {
-                    obj['Десятки'] = number[i];
-                } else if(i === 2) {
-                    obj['Единицы'] = number[i];
-                }
+            for(var i = 0; i < num.length; i++) {
+                nums[digits[i]] = num[i];
             }
+
+            return nums;
         }
 
-        console.log(obj);
+        //хороший вариант делаем РЕВЕРС массива из цифр
+        function splitByDigitsTwo(num) {
+            var digits = ['Единицы', 'Десятки', 'Сотни'];
+            var nums = {};
+
+            for(var i = 0; i < 3; i++) {
+              nums[digits[i]] = num % 10;
+              num = (num - nums[digits[i]]) / 10;
+            }
+
+            return nums;
+        }
+
+        console.log(splitByDigitsOne(254));
+        console.log(splitByDigitsTwo(254));
     </script>
 </body>
 </html>
