@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //хороший вариант делаем РЕВЕРС массива из цифр
+        function splitByDigitsOne(num) {
+            var digits = ['Единицы', 'Десятки', 'Сотни'];
+            var nums = {};
+            num = (num + '').split('').reverse();
+
+            for(var i = 0; i < num.length; i++) {
+                nums[digits[i]] = num[i];
+            }
+
+            return nums;
+        }
+
+        //хороший вариант математическое решение
+        function splitByDigitsTwo(num) {
+            var digits = ['Единицы', 'Десятки', 'Сотни'];
+            var nums = {};
+
+            for(var i = 0; i < 3; i++) {
+              nums[digits[i]] = num % 10;
+              num = (num - nums[digits[i]]) / 10;
+            }
+
+            return nums;
+        }
+
+        console.log(splitByDigitsOne(254));
+        console.log(splitByDigitsTwo(254));
+    </script>
+</body>
+</html>
