@@ -13,6 +13,7 @@
     width: 100%;
     height: 100%;
     text-align: center;
+    margin-top: 50px;
 }
 
 .chess_head {
@@ -79,6 +80,7 @@
 .chess_table_x {
     position: absolute !important;
     width: 100%;
+    text-transform: uppercase;
 }
 
 .chess_table_x td {

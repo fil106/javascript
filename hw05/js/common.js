@@ -14,6 +14,7 @@ function drawTable(cls, x) {
 
     for(var i = 0; i <= x; i++) {
         var row = table.insertRow(i);
+        row.setAttribute('row', x - i);
         if(i === x) {
             row.classList.add('chess_table_x');
         }
@@ -35,7 +36,9 @@ function drawTable(cls, x) {
         }
     }
 
-    //Добавляем белые фигуры на доску
+    //Добавляем белые фигуры на доску;
+    //Функция добавления пешек, с возможностью указания строки,
+    //количество пешек заполняется в соответствии с 2-м параметром
     insertPawns('2', 8, 'white');
     insertRook(['a1','h1'], 'white');
     insertHorse(['b1','g1'], 'white');
@@ -55,85 +58,85 @@ function drawTable(cls, x) {
 }
 
 function insertPawns(row, x, type) {
-    var pawn = document.createElement('div');
+    var chess = document.createElement('div');
 
     if(type === 'white') {
-        pawn.classList.add('figure', 'pawn_white');
+        chess.classList.add('figure', 'pawn_white');
     } else if(type === 'black') {
-        pawn.classList.add('figure', 'pawn_black');
+        chess.classList.add('figure', 'pawn_black');
     }
 
     for(var k = 0; k < x; k++) {
-        table.querySelector('td[position="' + abs[k] + row + '"]').appendChild(pawn.cloneNode(true));
+        table.querySelector('td[position="' + abs[k] + row + '"]').appendChild(chess.cloneNode(true));
     }
 }
 
 function insertRook(row, type) {
-    var pawn = document.createElement('div');
+    var chess = document.createElement('div');
 
     if(type === 'white') {
-        pawn.classList.add('figure', 'rook_white');
+        chess.classList.add('figure', 'rook_white');
     } else if(type === 'black') {
-        pawn.classList.add('figure', 'rook_black');
+        chess.classList.add('figure', 'rook_black');
     }
 
     for(var i in row) {
-        table.querySelector('td[position="' + row[i] + '"]').appendChild(pawn.cloneNode(true));
+        table.querySelector('td[position="' + row[i] + '"]').appendChild(chess.cloneNode(true));
     }
 }
 
 function insertHorse(row, type) {
-    var pawn = document.createElement('div');
+    var chess = document.createElement('div');
 
     if(type === 'white') {
-        pawn.classList.add('figure', 'horse_white');
+        chess.classList.add('figure', 'horse_white');
     } else if(type === 'black') {
-        pawn.classList.add('figure', 'horse_black');
+        chess.classList.add('figure', 'horse_black');
     }
 
     for(var i in row) {
-        table.querySelector('td[position="' + row[i] + '"]').appendChild(pawn.cloneNode(true));
+        table.querySelector('td[position="' + row[i] + '"]').appendChild(chess.cloneNode(true));
     }
 }
 
 function insertElephant(row, type) {
-    var pawn = document.createElement('div');
+    var chess = document.createElement('div');
 
     if(type === 'white') {
-        pawn.classList.add('figure', 'elephant_white');
+        chess.classList.add('figure', 'elephant_white');
     } else if(type === 'black') {
-        pawn.classList.add('figure', 'elephant_black');
+        chess.classList.add('figure', 'elephant_black');
     }
 
     for(var i in row) {
-        table.querySelector('td[position="' + row[i] + '"]').appendChild(pawn.cloneNode(true));
+        table.querySelector('td[position="' + row[i] + '"]').appendChild(chess.cloneNode(true));
     }
 }
 
 function insertQueen(row, type) {
-    var pawn = document.createElement('div');
+    var chess = document.createElement('div');
 
     if(type === 'white') {
-        pawn.classList.add('figure', 'queen_white');
+        chess.classList.add('figure', 'queen_white');
     } else if(type === 'black') {
-        pawn.classList.add('figure', 'queen_black');
+        chess.classList.add('figure', 'queen_black');
     }
 
     for(var i in row) {
-        table.querySelector('td[position="' + row[i] + '"]').appendChild(pawn.cloneNode(true));
+        table.querySelector('td[position="' + row[i] + '"]').appendChild(chess.cloneNode(true));
     }
 }
 
 function insertKing(row, type) {
-    var pawn = document.createElement('div');
+    var chess = document.createElement('div');
 
     if(type === 'white') {
-        pawn.classList.add('figure', 'king_white');
+        chess.classList.add('figure', 'king_white');
     } else if(type === 'black') {
-        pawn.classList.add('figure', 'king_black');
+        chess.classList.add('figure', 'king_black');
     }
 
     for(var i in row) {
-        table.querySelector('td[position="' + row[i] + '"]').appendChild(pawn.cloneNode(true));
+        table.querySelector('td[position="' + row[i] + '"]').appendChild(chess.cloneNode(true));
     }
 }
