@@ -5,7 +5,6 @@ var table = document.createElement('table');
 function main() {
     var chess = drawTable('chess_table', 8);
 
-    document.querySelector('#start').classList.add('display_none');
     chess.classList.add('animated', 'bounceInDown');
     document.querySelector('#chess').appendChild(chess);
 }
@@ -143,3 +142,5 @@ function insertKing(row, type) {
         table.querySelector('td[position="' + row[i] + '"]').appendChild(chess.cloneNode(true));
     }
 }
+
+window.onload = main;
