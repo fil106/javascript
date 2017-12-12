@@ -17,6 +17,7 @@ function drawTable(cls, x) {
     for(var i = 0; i <= x; i++) {
         var row = table.insertRow(i);
         row.setAttribute('row', x - i);
+
         if(i === x) {
             row.classList.add('chess_table_x');
         }
