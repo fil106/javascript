@@ -3,8 +3,11 @@ var abs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 var table = document.createElement('table');
 
 function main() {
+    var chess = drawTable('chess_table', 8);
+
     document.querySelector('#start').classList.add('display_none');
-    document.querySelector('#chess').appendChild(drawTable('chess_table', 8));
+    chess.classList.add('animated', 'bounceInDown');
+    document.querySelector('#chess').appendChild(chess);
 }
 
 function drawTable(cls, x) {
