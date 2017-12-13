@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Крестики-нолики</title>
+    <style>
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cross_ziro {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: #eee;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .cross_ziro .row {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 33%;
+            border-bottom: 1px dashed black;
+        }
+
+        .cross_ziro .row:last-child {border: none;}
+
+        .cross_ziro .cell {width: 33%;}
+
+        .cross_ziro .cell > img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cross_ziro .row .cell:nth-child(2) {
+            border-left: 1px dashed black;
+            border-right: 1px dashed black;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = main;
+
+        function main() {
+            document.getElementsByClassName('container')[0].appendChild(drawTable('cross_ziro', 3, 3));
+        }
+
+        function drawTable(cls, numRows, numCells) {
+            var table = document.createElement('div');
+            var row = document.createElement('div');
+            var cell = document.createElement('div');
+
+            table.classList.add(cls);
+            row.classList.add('row');
+            cell.classList.add('cell');
+
+            for(var i = 0; i < numRows; i++) {
+                for(var j = 0; i < numCells; j++) {
+                    table.appendChild(cell.cloneNode(true));
+                }
+                // table.appendChild(row.cloneNode(true));
+            }
+
+            return table;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="cross_ziro">-->
+            <!--<div class="row">-->
+                <!--<div class="cell"><img src="img/cross.png" alt="Крестик"></div>-->
+                <!--<div class="cell"><img src="img/ziro.png" alt="Крестик"></div>-->
+                <!--<div class="cell"></div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="cell"></div>-->
+                <!--<div class="cell"></div>-->
+                <!--<div class="cell"></div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="cell"></div>-->
+                <!--<div class="cell"></div>-->
+                <!--<div class="cell"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</body>
+</html>
