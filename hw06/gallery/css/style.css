@@ -20,9 +20,33 @@
     height: 100%;
     text-align: center;
     padding: 20px 0;
+    position: relative;
 }
 
-.main_view > img {
+.next, .prev {
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    z-index: 999;
+    transition: all .3s ease;
+}
+
+.next:hover, .prev:hover {
+    cursor: pointer;
+    height: 110px;
+    margin-top: -55px;
+}
+
+.next {
+    right: 15%;
+}
+
+.prev {
+    left: 15%;
+}
+
+.main_view > .curr_img {
     height: 100%;
     box-shadow: 0 0 20px 5px rgba(0,0,0,.2);
 }

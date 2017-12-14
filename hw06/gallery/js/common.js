@@ -1,11 +1,13 @@
 window.onload = main;
 
 function main() {
-    var images = ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg'];
+    var images = ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg'];
     var gallery = createGallery(images);
 
     document.getElementsByClassName('container')[0].appendChild(gallery);
     document.getElementsByClassName('gallery_list')[0].addEventListener('click', thumbClick);
+    document.getElementsByClassName('next')[0].addEventListener('click', nextClick);
+    document.getElementsByClassName('prev')[0].addEventListener('click', prevClick);
 }
 
 function createGallery(arr) {
@@ -15,14 +17,21 @@ function createGallery(arr) {
     var galleryList = document.createElement('div');
     var img = document.createElement('img');
     var galleryBg = document.getElementById('gallery_bg');
+    var next = document.createElement('img');
+    var prev = document.createElement('img');
 
     //небольшие манипуляции с созданными элементами =)
     gallery.classList.add('gallery');
     mainView.classList.add('main_view');
     galleryList.classList.add('gallery_list');
     img.classList.add('hvr-grow-shadow');
+    next.src = 'img/arrow-right.png';
+    prev.src = 'img/arrow-left.png';
+    next.classList.add('arrow', 'next');
+    prev.classList.add('arrow', 'prev');
 
     for(var i = 0; i < arr.length; i++) {
+        img.classList.add('image');
         img.src = 'img/small/' + arr[i];
         galleryList.appendChild(img.cloneNode(true));
     }
@@ -31,6 +40,9 @@ function createGallery(arr) {
 
     img.src = 'img/big/' + rand;
     img.className = '';
+    img.classList.add('curr_img');
+    gallery.appendChild(next.cloneNode(true));
+    gallery.appendChild(prev.cloneNode(true));
     mainView.appendChild(img.cloneNode(true));
     galleryList.querySelector('img[src="' + 'img/small/' + rand + '"]').classList.add('active');
 
@@ -49,7 +61,7 @@ function thumbClick(event) {
         var bigImg = img.src.replace('small', 'big');
 
         img.className = '';
-        img.classList.add('animated', 'fadeIn');
+        img.classList.add('animated', 'fadeIn', 'curr_img');
 
         img.src = bigImg;
 
@@ -58,6 +70,72 @@ function thumbClick(event) {
 
         removeClass('active', document.getElementsByClassName('active'));
         event.target.classList.add('active');
+    }
+}
+
+function nextClick(event) {
+    var mainView = this.parentNode.querySelector('.main_view');
+    var images = document.getElementsByClassName('image');
+    var img = document.createElement('img');
+    var indexActive = 0;
+
+    for(var i = 0; i < images.length; i++) {
+        if(images[i].classList.contains('active')) {
+            index = i;
+        }
+    }
+
+    if(index === images.length - 1) {
+        img.src = images[0].src;
+        img.className = 'curr_img';
+
+        mainView.innerHTML = '';
+
+        mainView.appendChild(img.cloneNode(true));
+        removeClass('active', document.getElementsByClassName('active'));
+        images[0].classList.add('active');
+    } else {
+        img.src = images[index + 1].src;
+        img.className = 'curr_img';
+
+        mainView.innerHTML = '';
+
+        mainView.appendChild(img.cloneNode(true));
+        removeClass('active', document.getElementsByClassName('active'));
+        images[index + 1].classList.add('active');
+    }
+}
+
+function prevClick(event) {
+    var mainView = this.parentNode.querySelector('.main_view');
+    var images = document.getElementsByClassName('image');
+    var img = document.createElement('img');
+    var indexActive = 0;
+
+    for(var i = 0; i < images.length; i++) {
+        if(images[i].classList.contains('active')) {
+            index = i;
+        }
+    }
+
+    if(index === 0) {
+        img.src = images[images.length - 1].src;
+        img.className = 'curr_img';
+
+        mainView.innerHTML = '';
+
+        mainView.appendChild(img.cloneNode(true));
+        removeClass('active', document.getElementsByClassName('active'));
+        images[images.length - 1].classList.add('active');
+    } else {
+        img.src = images[index - 1].src;
+        img.className = 'curr_img';
+
+        mainView.innerHTML = '';
+
+        mainView.appendChild(img.cloneNode(true));
+        removeClass('active', document.getElementsByClassName('active'));
+        images[index - 1].classList.add('active');
     }
 }
 
